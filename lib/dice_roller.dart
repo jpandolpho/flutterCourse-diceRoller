@@ -13,11 +13,13 @@ class DiceRoller extends StatefulWidget {
 }
 
 class _DiceRollerState extends State<DiceRoller> {
-  int currentRoll = 2;
+  int currentRoll1 = 1;
+  int currentRoll2 = 1;
 
   void rollDice() {
     setState(() {
-      currentRoll = rand.nextInt(6) + 1;
+      currentRoll1 = rand.nextInt(6) + 1;
+      currentRoll2 = rand.nextInt(6) + 1;
     });
   }
 
@@ -26,9 +28,17 @@ class _DiceRollerState extends State<DiceRoller> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Image.asset(
-          'assets/images/dice-$currentRoll.png',
-          width: 200,
+        Row(
+          children: [
+            Image.asset(
+              'assets/images/dice-$currentRoll1.png',
+              width: 200,
+            ),
+            Image.asset(
+              'assets/images/dice-$currentRoll2.png',
+              width: 200,
+            ),
+          ],
         ),
         const SizedBox(height: 20),
         ElevatedButton(
